@@ -14,7 +14,7 @@ function App() {
 
   async function getTodos() {
     await axios
-      .get(BASEURL + "/todo")
+      .get("/todo")
       .then((res) => {
         setTodos(res.data);
       })
@@ -31,7 +31,7 @@ function App() {
 
     const insertTodo = async () => {
       await axios
-        .post(BASEURL + "/todo", {
+        .post("/todo", {
           todoName: input,
           completed: false,
         })
@@ -49,7 +49,7 @@ function App() {
   function updateTodo(id) {
     const updateTodo = async () => {
       await axios
-        .put(BASEURL + "/todo/" + id, {}) //백엔드 연결할 때는 PUT으로
+        .put("/todo/" + id, {}) //백엔드 연결할 때는 PUT으로
         .then((res) => {
           //getTodos();
           //화면에서만 바꿔주기
@@ -67,7 +67,7 @@ function App() {
   function deleteTodo(id) {
     const deleteTodo = async () => {
       await axios
-        .delete(BASEURL + "/todo/" + id, {})
+        .delete("/todo/" + id, {})
         .then((res) => {
           setTodos(
             todos.filter((todo) => {
